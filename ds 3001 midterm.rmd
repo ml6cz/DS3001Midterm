@@ -1,0 +1,137 @@
+---
+title: "Artificial Intelligence"
+author: "Group 10: Megan Lin, Eva Mustafic, James Powell"
+date: "3/29/2021"
+output:
+  html_document:
+    theme: cosmo
+    toc: yes
+    toc_float: yes
+  pdf_document:
+    toc: yes
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE, cache=TRUE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r,include=FALSE}
+library(tidyverse)
+library(tidytext)
+library(ggwordcloud)
+library(gutenbergr)
+library(textdata)
+library(striprtf)
+library(dplyr)
+library(readr)
+library(knitr)
+# install.packages("leaflet")
+library(leaflet)
+```
+
+## Background Information
+
+Leaflet is one of the most popular open-source JavaScript libraries for interactive maps.
+It’s used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists like OpenStreetMap, Mapbox, and CartoDB.
+
+
+### Features 
+
+1. Interactive panning/zooming
+
+2. Compose maps using arbitrary combinations of:
+    * Map tiles
+    * Markers
+    * Polygons
+    * Lines
+    * Popups
+    * GeoJSO
+    
+3. Create maps right from the R console or RStudio
+
+4. Embed maps in knitr/R Markdown documents and Shiny apps
+
+5. Easily render spatial objects from the sp or sf packages, or data frames with latitude/longitude columns
+
+6. Use map bounds and mouse events to drive Shiny logic
+
+7. Display maps in non spherical mercator projections
+
+8. Augment map features using chosen plugins from leaflet plugins repository
+
+
+### Installation
+To install this R package, run this command at your R prompt:
+```{r, eval=FALSE}
+install.packages("leaflet")
+library(leaflet)
+```
+
+## Usage 
+
+### Create Maps {.tabset}
+
+#### Blank
+```{r}
+leaflet() %>% addTiles() 
+```
+
+#### Satelite
+```{r}
+leaflet() %>% addProviderTiles(providers$Esri.WorldImagery)
+```
+
+#### Color
+```{r}
+leaflet() %>% addTiles(group = "OSM") %>% addProviderTiles(providers$Esri.WorldStreetMap)
+```
+
+#### Combined
+```{r}
+leaflet() %>% addProviderTiles(providers$Esri.WorldImagery, group= 'Satellite') %>% addProviderTiles(providers$Esri.WorldStreetMap, group = 'Street View') %>% addProviderTiles(providers$Stamen.TonerLite, group = 'Toner Lite') %>% addLayersControl(baseGroups = c("Satellite", "Street View", "Toner Lite"), position = "topright", options = layersControlOptions(collapsed = FALSE))
+```
+
+### Different Location {.tabset}
+
+#### Zoom to Charlottesville
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  setView(lat = 38.0293, lng = -78.4767, zoom = 12)
+```
+
+#### Pin the Rotunda
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  # use the default base map which is OpenStreetMap tiles
+  addMarkers(lat = 38.0356 , lng = -78.5034,
+             popup = "The Rotunda")
+```
+
+
+### Create Shapes {.tabset}
+
+#### Shape around UVA 
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  addCircles(lng =-78.5080, lat=38.0336, weight = 1,
+    radius = 700)
+```
+
+#### Shape around VT
+```{r}
+leaflet() %>%
+  addTiles() %>%
+  addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)
+```
+
+
+
+
+## Similar Packages 
+## Reflection 
+## References 
