@@ -7,6 +7,7 @@ output:
     theme: cosmo
     toc: yes
     toc_float: yes
+    df_print: paged
   pdf_document:
     toc: yes
 editor_options:
@@ -33,10 +34,22 @@ library(leaflet)
 
 ## Background Information
 
-Leaflet is one of the most popular open-source JavaScript libraries for interactive maps.
-It’s used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists like OpenStreetMap, Mapbox, and CartoDB.
+Leaflet is an open-source JavaScript library for creating interactive maps that has been around since 2015.
 
+It is used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists at places like OpenStreetMap, Mapbox, and CartoDB to create insightful maps that offer more than just the basic photo of a map or Google Maps add-on. Its value lies in its customization that allows the developer to show more in-depth and specific features like popups, choropleths (shaded maps by density), and boundary lines.
 
+Leaflet is currently at version 2.0.4.1 as of January 7, 2021. Here are all the past version release dates:
+
+```{r echo = FALSE}
+version<-data.frame(Version = c("1.0.0", "1.0.1", "1.1.0", "2.0.0", "2.0.1", "2.0.2", "2.0.3", "2.0.4.1"),
+                    Release_Date=c("June 19, 2015", "Feb. 25, 2016", "Feb. 17, 2017", "Apr. 20, 2018", "June 4, 2018", "Aug. 27, 2018", "Nov. 14, 2019", "Jan. 7, 2021"))
+
+version
+
+```
+(Cheng, 2021)
+
+The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie.
 ### Features 
 
 1. Interactive panning/zooming
@@ -135,3 +148,4 @@ leaflet() %>%
 ## Similar Packages 
 ## Reflection 
 ## References 
+(Cheng, Joe 2021) https://www.rdocumentation.org/packages/leaflet/versions/2.0.4.1
