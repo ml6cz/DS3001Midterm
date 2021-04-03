@@ -49,7 +49,7 @@ version
 ```
 (Cheng, 2021)
 
-The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie.
+The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie (CRAN).
 ### Features 
 
 1. Interactive panning/zooming
@@ -141,11 +141,12 @@ leaflet() %>%
   addTiles() %>%
   addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)
 ```
-
-
-
-
 ## Similar Packages 
+```{r echo = FALSE}
+map_packages <- data.frame(Name = c("tmap, ggplot2"), Description = c("static and interactive maps, tidyverse data visualization package"))
+```
 ## Reflection 
 ## References 
 (Cheng, Joe 2021) https://www.rdocumentation.org/packages/leaflet/versions/2.0.4.1
+(Agafonkin, Vladimir 2016) http://rstudio.github.io/leaflet/
+(CRAN) https://cran.r-project.org/web/packages/leaflet/index.html
