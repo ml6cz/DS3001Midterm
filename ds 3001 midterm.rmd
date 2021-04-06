@@ -1,6 +1,6 @@
 ---
 title: "Artificial Intelligence"
-author: "Group 10: Megan Lin, Eva Mustafic, James Powell"
+author: "Group 7: Megan Lin, Eva Mustafic, James Powell"
 date: "3/29/2021"
 output:
   html_document:
@@ -50,6 +50,7 @@ version
 (Cheng, 2021)
 
 The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie (CRAN).
+
 ### Features 
 
 1. Interactive panning/zooming
@@ -82,40 +83,60 @@ install.packages("leaflet")
 library(leaflet)
 ```
 
+```{r}
+
+```
+
 ## Usage 
+
+
+
 
 ### Create Maps {.tabset}
 
-#### Blank
+Before delving deeply into the features that this package prides itself on, we should first outline the initial steps to getting a basic world map using the leaflet package. The following functions can be used to give you an initial map to work with before adding any flashy details
+
+ * leaflet()
+ * addTiles()
+ * addProviderTiles()
+ * addLayersControl()
+ 
+#### addTiles()
+Using the addTiles() function with no arguments in order to see the most basic world map that leaflet can deliver to you.
 ```{r}
 leaflet() %>% addTiles() 
 ```
 
-#### Satelite
+#### addProviderTiles()
+addProviderTiles() is a tile adding function that is different from addTiles() for one major reason, and it is that the data argument for this function is indication that you are taking a tile template from another known map creator and using it. So in this example map, we're taking a pre-provided map that makes a realistic map of the earth in terms of imagery, and then again in the form of a roadmap.
 ```{r}
 leaflet() %>% addProviderTiles(providers$Esri.WorldImagery)
 ```
 
-#### Color
 ```{r}
 leaflet() %>% addTiles(group = "OSM") %>% addProviderTiles(providers$Esri.WorldStreetMap)
 ```
 
-#### Combined
+#### addLayersControl()
+addLayersControl() allows us to layer multiple different tile sets so that the same leaflet() can create multiple different types of maps in one, and you can select which map to view.
 ```{r}
 leaflet() %>% addProviderTiles(providers$Esri.WorldImagery, group= 'Satellite') %>% addProviderTiles(providers$Esri.WorldStreetMap, group = 'Street View') %>% addProviderTiles(providers$Stamen.TonerLite, group = 'Toner Lite') %>% addLayersControl(baseGroups = c("Satellite", "Street View", "Toner Lite"), position = "topright", options = layersControlOptions(collapsed = FALSE))
 ```
 
-### Different Location {.tabset}
+
+### Locations {.tabset}
+Another feature that leaflet() includes is the ability to zoom in on, pin, and label specific points on their map
 
 #### Zoom to Charlottesville
+setView() is a leaflet function that allows you to zoom in on the map to a specific set of coordinates and set how intensly you want to zoom in as well!
 ```{r}
 leaflet() %>%
   addTiles() %>%
   setView(lat = 38.0293, lng = -78.4767, zoom = 12)
 ```
 
-#### Pin the Rotunda
+#### Pinning
+now that we have zoomed into the charlottesville area, we can easily see a pin if we placed one, to demonstrate the addMarkers() function, we will put a pin directly on the rotunda
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -127,7 +148,7 @@ leaflet() %>%
 
 ### Create Shapes {.tabset}
 
-#### Shape around UVA 
+#### Circle around UVA 
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -135,7 +156,7 @@ leaflet() %>%
     radius = 700)
 ```
 
-#### Shape around VT
+#### Rectangle around VT
 ```{r}
 leaflet() %>%
   addTiles() %>%
