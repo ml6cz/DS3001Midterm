@@ -20,11 +20,6 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ```{r,include=FALSE}
 library(tidyverse)
-library(tidytext)
-library(ggwordcloud)
-library(gutenbergr)
-library(textdata)
-library(striprtf)
 library(dplyr)
 library(readr)
 library(knitr)
@@ -36,7 +31,9 @@ library(leaflet)
 
 Leaflet is an open-source JavaScript library for creating interactive maps that has been around since 2015.
 
-It is used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists at places like OpenStreetMap, Mapbox, and CartoDB to create insightful maps that offer more than just the basic photo of a map or Google Maps add-on. Its value lies in its customization that allows the developer to show more in-depth and specific features like popups, choropleths (shaded maps by density), and boundary lines.
+It is used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists at places like OpenStreetMap, Mapbox, and CartoDB to create insightful maps that offer more than just the basic photo of a map or Google Maps add-on. Its value lies in its customization that allows the developer to show more in-depth and specific features like popups, choropleths (shaded maps by density), and boundary lines (Agafonkin, Vladimir 2016).
+
+Leaflet uses MapBox's maptiles to create a basemap -- a common method popularized by Google Maps and a standard for most interactive web maps. Next, tiles can be added on top of the basemap to create a specific type of overlay to show some type of information (e.g. colored weather rain maps, major roads, cartography maps, etc.) and combined to convey customized levels of information. The default tile that an be added is from OpenStreetMap and includes the basics like roadways, coloring by type of area (e.g. blue for water, green for parks, tan for general land), names of cities/states/countries, etc. Third party tiles can also be installed for more complex and customized overlays (CRAN).
 
 Leaflet is currently at version 2.0.4.1 as of January 7, 2021. Here are all the past version release dates:
 
@@ -49,7 +46,7 @@ version
 ```
 (Cheng, 2021)
 
-The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie (CRAN).
+The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie. Furthermore, the only dependencies are version 3.1.0 and above of R (CRAN).
 
 ### Features 
 
@@ -87,7 +84,7 @@ library(leaflet)
 
 ```
 
-## Usage 
+## Examples of Usage 
 
 
 
@@ -162,13 +159,33 @@ leaflet() %>%
   addTiles() %>%
   addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)
 ```
-## Similar Packages 
+##  Similar Packages
 ```{r echo = FALSE}
-map_packages <- data.frame(Name = c("tmap, ggplot2"), Description = c("static and interactive maps, tidyverse data visualization package"))
+map_packages <- data.frame(Name = c("plot()", 
+                                    "grid package", 
+                                    "ggplot2 package", 
+                                    "tmap package"), 
+                           Description = c("R's built-in plotting function",
+           "Allows low level control of static maps",
+           "Static and interactive maps can be made, but is more generic for all types of graphs", 
+           "Animated maps like a gif can be created; static and interactive maps can be mixed"))
+
+map_packages
 ```
+plot() is a basic r-function that can be used to create very basic maps for the user. It heavily relies on the sp and raster packages. Overall, this is a generic function that can be used to make maps, but isn't specialized for complex map making.
+
+grid allows for low level static maps (e.g. pngs, jpgs) that allow for a snapshot of the data that is to be conveyed at a moment in time. It has low customizability, but can create more complex maps that plot()
+
+ggplot2 is tidyverse's data visualization package that is made for create graphs of all types including bar graphs, scatterplots, line graphs, and maps. While it can create static and interactive maps and is rather easy to use because of its reliance on grammar of graphics, it isn't specifically made for maps so it can be a bit difficult to navigate and less customizable.
+
+tmap will be more familiar to ggplot2 users as it also relies on grammar of graphics & separates aesthetics from data processing. It can create a mix of static and interactive maps and has some cool features like creating gifs and faceting graphs. This is the best contender/substitute for leaflet.
+
 (Lovelace, Robin)
+
 ## Reflection 
+
 ## References 
+
 (Cheng, Joe 2021) https://www.rdocumentation.org/packages/leaflet/versions/2.0.4.1
 (Agafonkin, Vladimir 2016) http://rstudio.github.io/leaflet/
 (CRAN) https://cran.r-project.org/web/packages/leaflet/index.html
