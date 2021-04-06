@@ -172,16 +172,24 @@ map_packages <- data.frame(Name = c("plot()",
 
 map_packages
 ```
+### Plot
 plot() is a basic r-function that can be used to create very basic maps for the user. It heavily relies on the sp and raster packages. Overall, this is a generic function that is easy to use and can be used to make a quick map, but isn't specialized for complex map making.
+(Lovelace, 2021)
 
+### Grid
 grid allows for low level static maps (e.g. pngs, jpgs) that allow for a snapshot of the data that is to be conveyed at a moment in time. It has low customization, but can create more complex maps that plot()
+(Lovelace, 2021)
 
+### ggplot2
 ggplot2 is tidyverse's data visualization package that is made for create graphs of all types including bar graphs, scatterplots, line graphs, and maps. While it can create static and interactive maps and is rather easy to use because of its reliance on grammar of graphics, it isn't specifically made for maps so it can be a bit difficult to navigate and less customizable. Wrappers such as ggiraph(), ggplotly() and gganimate() can be used to build off of ggplot2's static maps to make interactive maps. However, the interactives maps that can be created with these wrappers are not as good as leaflet's and requires lots of external research on the user's part to use which can make it hefty to use. Furthermore, users will need to convert to a dataframe using tidy() which may create issues in some cases.
+(Lovelace, 2021)
 
+### tmap
 tmap will be more familiar to ggplot2 users as it also relies on grammar of graphics & separates aesthetics from data processing. It can create a mix of static and interactive maps and has some cool features like creating gifs and faceting graphs. This is the best contender/substitute for leaflet. tmap's maps can be exported to be used in leaflet, and therefore also shiny which makes it flexible. However, it is overall not as well known so it is used less.
+(Lovelace, 2021)
 
+### leaflet
 leaflet can easily create high-level dynamic & interactive maps. The level of 3rd party overlays that users can add in addition to leaflet's ease of use with Shiny makes it highly user-friendly. However, because leaflet doesn't rely on a "grammar of graphics" syntax like other graphing packages, it may have a higher learning curve. Furthermore, while leaflet is good at making dynamic maps, other packages like ggplot2 can make better static maps than leaflet can.
-
 (Lovelace, 2021)
 
 ## Reflection 
