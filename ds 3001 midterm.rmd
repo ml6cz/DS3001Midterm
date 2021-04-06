@@ -190,8 +190,6 @@ for (i in counties){
     highlightOptions = highlightOptions(color = "red", weight = 2,
       bringToFront = TRUE))
 }
-  
-  
 
 for (i in state_files){
   geo_data <- readLines(i) %>% paste(collapse = "\n")
