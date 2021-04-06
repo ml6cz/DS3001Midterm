@@ -1,5 +1,5 @@
 ---
-title: "Artificial Intelligence"
+title: "Leaflet"
 author: "Group 7: Megan Lin, Eva Mustafic, James Powell"
 date: "3/29/2021"
 output:
@@ -87,7 +87,7 @@ library(leaflet)
 
 ### Create Maps {.tabset}
 
-Before delving deeply into the features that this package prides itself on, we should first outline the initial steps to getting a basic world map using the leaflet package. 
+Before delving into the features that this package prides itself on, we should first outline the initial steps to getting a basic world map using the leaflet package. 
 
  * leaflet()
  * addTiles()
@@ -95,13 +95,13 @@ Before delving deeply into the features that this package prides itself on, we s
  * addLayersControl()
  
 #### addTiles()
-Using the addTiles() function with no arguments in order to see the most basic world map that leaflet can deliver to you.
+Using the addTiles() function with no arguments in order to see the most basic world map that leaflet can give you.
 ```{r}
 leaflet() %>% addTiles() 
 ```
 
 #### addProviderTiles()
-addProviderTiles() is a tile adding function that is different from addTiles() for one major reason, and it is that the data argument for this function is indication that you are taking a tile template from another known map creator and using it. So in this example map, we're taking a pre-provided map that makes a realistic map of the earth in terms of imagery, and then again in the form of a roadmap.
+The addProviderTiles() function is a tile adding function that is different from addTiles() for one major reason, and it is that the data argument for this function is indication that you are taking a tile template from another known map creator and using it. So in this example map, we're taking a pre-provided map that makes a realistic map of the earth in terms of imagery, and then again in the form of a roadmap.
 ```{r}
 leaflet() %>% addProviderTiles(providers$Esri.WorldImagery)
 ```
@@ -111,7 +111,7 @@ leaflet() %>% addTiles(group = "OSM") %>% addProviderTiles(providers$Esri.WorldS
 ```
 
 #### addLayersControl()
-addLayersControl() allows us to layer multiple different tile sets so that the same leaflet() can create multiple different types of maps in one, and you can select which map to view.
+The addLayersControl() function allows us to layer multiple different tile sets so that the same leaflet() can create multiple different types of maps in one, and you can select which map to view.
 ```{r}
 leaflet() %>% addProviderTiles(providers$Esri.WorldImagery, group= 'Satellite') %>% addProviderTiles(providers$Esri.WorldStreetMap, group = 'Street View') %>% addProviderTiles(providers$Stamen.TonerLite, group = 'Toner Lite') %>% addLayersControl(baseGroups = c("Satellite", "Street View", "Toner Lite"), position = "topright", options = layersControlOptions(collapsed = FALSE))
 ```
@@ -121,7 +121,7 @@ leaflet() %>% addProviderTiles(providers$Esri.WorldImagery, group= 'Satellite') 
 A feature that absolutely necessary to know when using leaflet() is the ability to set the view to, pin, and label specific points on their map.
 
 #### Set View to Charlottesville
-setView() is a leaflet function that allows you to zoom in on the map to a specific set of coordinates and set how intensly you want to zoom in as well!
+The setView() function is a leaflet function that allows you to zoom in on the map to a specific set of coordinates and set how intensely you want to zoom in as well!
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -129,7 +129,7 @@ leaflet() %>%
 ```
 
 #### Pinning
-now that we have zoomed into the charlottesville area, we can easily see a pin if we placed one, to demonstrate the addMarkers() function, we will put a pin directly on the rotunda.
+now that we have zoomed into the Charlottesville area, we can easily see a pin if we placed one, to demonstrate this, we will use the addMarkers() function and put a pin directly on the rotunda.
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -140,10 +140,10 @@ leaflet() %>%
 
 
 ### Create Shapes {.tabset}
-Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can creae over the map.
+Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can create over the map.
 
 #### Circle around UVA 
-addCircles() simply adds a circle with its center located at the specified coordinates, and the radius is an argument.
+The addCircles() function simply adds a circle with its center located at the specified coordinates, and the radius is an argument.
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -152,7 +152,7 @@ leaflet() %>%
 ```
 
 #### Rectangle around VT
-addRectangles() is a function similar to addCircles(), but it just superimposes a rectangle over the coordinates instead of a circle.
+The addRectangles() function is similar to addCircles(), but it just superimposes a rectangle over the coordinates instead of a circle.
 ```{r}
 leaflet() %>%
   addTiles() %>%
