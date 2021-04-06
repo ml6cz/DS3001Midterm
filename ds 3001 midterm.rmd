@@ -160,7 +160,7 @@ leaflet() %>%
   addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)
 ```
 
-### Cool GeoJson Features
+### GeoJson Features and Combinations
 One of the most interesting and cool things about leaflet is its ability to take in other location files and place them on the map. Here we take all of the states in the united states and the counties in Virginia in the form of GeoJSON files and and put them on the streetmap from earlier. 
 ```{r, echo = TRUE, include=FALSE, message=FALSE}
 #state lines and virginia counties retrieved from "https://github.com/johan/world.geo.json"
