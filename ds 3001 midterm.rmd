@@ -176,9 +176,9 @@ plot() is a basic r-function that can be used to create very basic maps for the 
 
 grid allows for low level static maps (e.g. pngs, jpgs) that allow for a snapshot of the data that is to be conveyed at a moment in time. It has low customization, but can create more complex maps that plot()
 
-ggplot2 is tidyverse's data visualization package that is made for create graphs of all types including bar graphs, scatterplots, line graphs, and maps. While it can create static and interactive maps and is rather easy to use because of its reliance on grammar of graphics, it isn't specifically made for maps so it can be a bit difficult to navigate and less customizable. Wrappers such as ggiraph(), ggplotly() and gganimate() can be used to build off of ggplot2's static maps to make interactive maps.
+ggplot2 is tidyverse's data visualization package that is made for create graphs of all types including bar graphs, scatterplots, line graphs, and maps. While it can create static and interactive maps and is rather easy to use because of its reliance on grammar of graphics, it isn't specifically made for maps so it can be a bit difficult to navigate and less customizable. Wrappers such as ggiraph(), ggplotly() and gganimate() can be used to build off of ggplot2's static maps to make interactive maps. However, the interactives maps that can be created with these wrappers are not as good as leaflet's and requires lots of external research on the user's part to use which can make it hefty to use. Furthermore, users will need to convert to a dataframe using tidy() which may create issues in some cases.
 
-tmap will be more familiar to ggplot2 users as it also relies on grammar of graphics & separates aesthetics from data processing. It can create a mix of static and interactive maps and has some cool features like creating gifs and faceting graphs. This is the best contender/substitute for leaflet.
+tmap will be more familiar to ggplot2 users as it also relies on grammar of graphics & separates aesthetics from data processing. It can create a mix of static and interactive maps and has some cool features like creating gifs and faceting graphs. This is the best contender/substitute for leaflet. tmap's maps can be exported to be used in leaflet, and therefore also shiny which makes it flexible. However, it is overall not as well known so it is used less.
 
 (Lovelace, 2021)
 
@@ -198,12 +198,6 @@ _If you want to create any sort of geographic visualization on the earth, Leafle
 
 
 ## References 
-
-(Cheng, Joe 2021) https://www.rdocumentation.org/packages/leaflet/versions/2.0.4.1
-(Agafonkin, Vladimir 2016) http://rstudio.github.io/leaflet/
-(CRAN) https://cran.r-project.org/web/packages/leaflet/index.html
-(Lovelace, Robin)https://geocompr.robinlovelace.net/adv-map.html
-
 Agafonkin, V. (2016). Leaflet for R. Retrieved from http://rstudio.github.io/leaflet/
 
 Cheng, J. (2021, January 07 a). Create interactive web maps with the JavaScript 'leaflet' LIBRARY [R Package leaflet Version 2.0.4.1]. Retrieved from https://cran.r-project.org/web/packages/leaflet/index.html
