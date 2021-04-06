@@ -80,10 +80,6 @@ install.packages("leaflet")
 library(leaflet)
 ```
 
-```{r}
-
-```
-
 ## Examples of Usage 
 
 
@@ -122,7 +118,7 @@ leaflet() %>% addProviderTiles(providers$Esri.WorldImagery, group= 'Satellite') 
 
 
 ### Locations {.tabset}
-A feature that absolutely necessary to know when using leaflet() is the ability to set the view to, pin, and label specific points on their map
+A feature that absolutely necessary to know when using leaflet() is the ability to set the view to, pin, and label specific points on their map.
 
 #### Set View to Charlottesville
 setView() is a leaflet function that allows you to zoom in on the map to a specific set of coordinates and set how intensly you want to zoom in as well!
@@ -144,7 +140,8 @@ leaflet() %>%
 
 
 ### Create Shapes {.tabset}
-Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can creae over the map
+Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can creae over the map.
+
 #### Circle around UVA 
 addCircles() simply adds a circle with its center located at the specified coordinates, and the radius is an argument.
 ```{r}
@@ -186,6 +183,19 @@ tmap will be more familiar to ggplot2 users as it also relies on grammar of grap
 (Lovelace, Robin)
 
 ## Reflection 
+_If you want to create any sort of geographic visualization on the earth, Leaflet is a package that is equipped with the features to get the job done in a way that is desirable both functionally and aesthetically_
+
+### Pros
+
+ * This package is home to many useful features for creating your geographic.
+ * Has a multitude of provided map types.
+ * Straight-forward functions that are easy to understand.
+ * Widely-used, so there are always useful applications of the code to view rather than just a write up by the developers.
+
+### Cons
+
+ * the same thing is able to be accomplished through many different means.
+
 
 ## References 
 

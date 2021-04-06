@@ -315,38 +315,38 @@ library(leaflet)</code></pre>
 <h4>addTiles()</h4>
 <p>Using the addTiles() function with no arguments in order to see the most basic world map that leaflet can deliver to you.</p>
 <pre class="r"><code>leaflet() %&gt;% addTiles() </code></pre>
-<div id="htmlwidget-9ed5a50cf78ec2f99fc5" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9ed5a50cf78ec2f99fc5">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-5c7433e6fdf28f409a3e" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5c7433e6fdf28f409a3e">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}]},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="addprovidertiles" class="section level4">
 <h4>addProviderTiles()</h4>
 <p>addProviderTiles() is a tile adding function that is different from addTiles() for one major reason, and it is that the data argument for this function is indication that you are taking a tile template from another known map creator and using it. So in this example map, we’re taking a pre-provided map that makes a realistic map of the earth in terms of imagery, and then again in the form of a roadmap.</p>
 <pre class="r"><code>leaflet() %&gt;% addProviderTiles(providers$Esri.WorldImagery)</code></pre>
-<div id="htmlwidget-c5290ef3597ad176b5a7" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c5290ef3597ad176b5a7">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b82b8284f7007e4d4d69" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b82b8284f7007e4d4d69">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
 <pre class="r"><code>leaflet() %&gt;% addTiles(group = &quot;OSM&quot;) %&gt;% addProviderTiles(providers$Esri.WorldStreetMap)</code></pre>
-<div id="htmlwidget-42f5a392840872857665" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-42f5a392840872857665">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OSM",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e5c920e6b1c969ceb875" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e5c920e6b1c969ceb875">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,"OSM",{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addProviderTiles","args":["Esri.WorldStreetMap",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]}]},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="addlayerscontrol" class="section level4">
 <h4>addLayersControl()</h4>
 <p>addLayersControl() allows us to layer multiple different tile sets so that the same leaflet() can create multiple different types of maps in one, and you can select which map to view.</p>
 <pre class="r"><code>leaflet() %&gt;% addProviderTiles(providers$Esri.WorldImagery, group= &#39;Satellite&#39;) %&gt;% addProviderTiles(providers$Esri.WorldStreetMap, group = &#39;Street View&#39;) %&gt;% addProviderTiles(providers$Stamen.TonerLite, group = &#39;Toner Lite&#39;) %&gt;% addLayersControl(baseGroups = c(&quot;Satellite&quot;, &quot;Street View&quot;, &quot;Toner Lite&quot;), position = &quot;topright&quot;, options = layersControlOptions(collapsed = FALSE))</code></pre>
-<div id="htmlwidget-c852e4ea89a466540e56" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c852e4ea89a466540e56">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Satellite",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldStreetMap",null,"Street View",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Stamen.TonerLite",null,"Toner Lite",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addLayersControl","args":[["Satellite","Street View","Toner Lite"],[],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b83c83dc04fea66dec46" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-b83c83dc04fea66dec46">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Satellite",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Esri.WorldStreetMap",null,"Street View",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["Stamen.TonerLite",null,"Toner Lite",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addLayersControl","args":[["Satellite","Street View","Toner Lite"],[],{"collapsed":false,"autoZIndex":true,"position":"topright"}]}]},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="locations" class="section level3 tabset">
 <h3 class="tabset">Locations</h3>
-<p>A feature that absolutely necessary to know when using leaflet() is the ability to set the view to, pin, and label specific points on their map</p>
+<p>A feature that absolutely necessary to know when using leaflet() is the ability to set the view to, pin, and label specific points on their map.</p>
 <div id="set-view-to-charlottesville" class="section level4">
 <h4>Set View to Charlottesville</h4>
 <p>setView() is a leaflet function that allows you to zoom in on the map to a specific set of coordinates and set how intensly you want to zoom in as well!</p>
 <pre class="r"><code>leaflet() %&gt;%
   addTiles() %&gt;%
   setView(lat = 38.0293, lng = -78.4767, zoom = 12)</code></pre>
-<div id="htmlwidget-5baad6ab1bdb1ceef276" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5baad6ab1bdb1ceef276">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[38.0293,-78.4767],12,[]]},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-aad6b21dc94719cdab84" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aad6b21dc94719cdab84">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]}],"setView":[[38.0293,-78.4767],12,[]]},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="pinning" class="section level4">
 <h4>Pinning</h4>
@@ -356,13 +356,13 @@ library(leaflet)</code></pre>
   # use the default base map which is OpenStreetMap tiles
   addMarkers(lat = 38.0356 , lng = -78.5034,
              popup = &quot;The Rotunda&quot;)</code></pre>
-<div id="htmlwidget-b14e6d3f4a0a29ca8749" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-b14e6d3f4a0a29ca8749">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[38.0356,-78.5034,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The Rotunda",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.0356,38.0356],"lng":[-78.5034,-78.5034]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-877f109f08a41916d14b" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-877f109f08a41916d14b">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addMarkers","args":[38.0356,-78.5034,null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},"The Rotunda",null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[38.0356,38.0356],"lng":[-78.5034,-78.5034]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <div id="create-shapes" class="section level3 tabset">
 <h3 class="tabset">Create Shapes</h3>
-<p>Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can creae over the map</p>
+<p>Another interesting feature that is similar to the pin is the ability to add polygons to highlight areas. The examples that we have are just simple polygons, but there are many different polygons that you can creae over the map.</p>
 <div id="circle-around-uva" class="section level4">
 <h4>Circle around UVA</h4>
 <p>addCircles() simply adds a circle with its center located at the specified coordinates, and the radius is an argument.</p>
@@ -370,8 +370,8 @@ library(leaflet)</code></pre>
   addTiles() %&gt;%
   addCircles(lng =-78.5080, lat=38.0336, weight = 1,
     radius = 700)</code></pre>
-<div id="htmlwidget-81cb03f404e568680a68" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-81cb03f404e568680a68">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[38.0336,-78.508,700,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[38.0336,38.0336],"lng":[-78.508,-78.508]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d2b95f76e3e0bef41a23" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d2b95f76e3e0bef41a23">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addCircles","args":[38.0336,-78.508,700,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[38.0336,38.0336],"lng":[-78.508,-78.508]}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div id="rectangle-around-vt" class="section level4">
 <h4>Rectangle around VT</h4>
@@ -379,8 +379,8 @@ library(leaflet)</code></pre>
 <pre class="r"><code>leaflet() %&gt;%
   addTiles() %&gt;%
   addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)</code></pre>
-<div id="htmlwidget-529c9e5d96bcbe8c3d8f" style="width:672px;height:480px;" class="leaflet html-widget"></div>
-<script type="application/json" data-for="htmlwidget-529c9e5d96bcbe8c3d8f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addRectangles","args":[37.2184,-80.4384,37.2284,-80.4234,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[37.2184,37.2284],"lng":[-80.4384,-80.4234]}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e51a59690a570b99566c" style="width:672px;height:480px;" class="leaflet html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e51a59690a570b99566c">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"http://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addRectangles","args":[37.2184,-80.4384,37.2284,-80.4234,null,null,{"interactive":true,"className":"","stroke":true,"color":"#03F","weight":1,"opacity":0.5,"fill":true,"fillColor":"#03F","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[37.2184,37.2284],"lng":[-80.4384,-80.4234]}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -399,7 +399,22 @@ library(leaflet)</code></pre>
 </div>
 <div id="reflection" class="section level2">
 <h2>Reflection</h2>
-<p><em>If you want to create any sort of geographic visualization on the earth, Leaflet is a package that is equipped with the features to get the job done in a way that is desirable both functionally and aesthetically.</em></p>
+<p><em>If you want to create any sort of geographic visualization on the earth, Leaflet is a package that is equipped with the features to get the job done in a way that is desirable both functionally and aesthetically</em></p>
+<div id="pros" class="section level3">
+<h3>Pros</h3>
+<ul>
+<li>This package is home to many useful features for creating your geographic.</li>
+<li>Has a multitude of provided map types.</li>
+<li>Straight-forward functions that are easy to understand.</li>
+<li>Widely-used, so there are always useful applications of the code to view rather than just a write up by the developers.</li>
+</ul>
+</div>
+<div id="cons" class="section level3">
+<h3>Cons</h3>
+<ul>
+<li>the same thing is able to be accomplished through many different means.</li>
+</ul>
+</div>
 </div>
 <div id="references" class="section level2">
 <h2>References</h2>
