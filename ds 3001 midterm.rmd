@@ -25,6 +25,7 @@ library(readr)
 library(knitr)
 # install.packages("leaflet")
 library(leaflet)
+library(rgdal)
 ```
 
 ## Background Information
@@ -159,6 +160,47 @@ leaflet() %>%
   addRectangles(lng1 = -80.4384, lat1 = 37.2184 ,lng =-80.4234, lat=37.2284, weight = 1)
 ```
 
+### GeoJson Features and Combinations
+One of the most interesting and cool things about leaflet is its ability to take in other location files and place them on the map. Here we take all of the states in the united states and the counties in Virginia in the form of GeoJSON files and and put them on the streetmap from earlier. 
+```{r, echo = TRUE, include=FALSE, message=FALSE}
+#state lines and virginia counties retrieved from "https://github.com/johan/world.geo.json"
+
+state_files <- list.files(path="./world.geo.json/countries/USA/", pattern="*.geo.json", full.names=TRUE, recursive=FALSE)
+virginia_files <- list.files(path="./world.geo.json/countries/USA/VA", pattern="*.geo.json", full.names=TRUE, recursive=FALSE)
+
+counties = vector()
+
+for (j in virginia_files){
+  new <- rgdal::readOGR(j)
+  counties = append(counties, new)
+}
+```
+```{r}
+map <- leaflet()%>%
+  addProviderTiles(providers$Esri.WorldStreetMap)%>%
+  setView(lat = 38.57, lng = -79.71, zoom = 6) %>%
+    addMarkers(lat = 38.0356 , lng = -78.5034,
+             popup = "The Rotunda")%>%
+    addCircles(lng =-78.5080, lat=38.0336, weight = 1,
+    radius = 700, label = "The University of Virginia")
+
+for (i in counties){
+  map = map %>% addPolygons(data = i,  color = "#444444", weight = 1, smoothFactor = 0.5,
+    opacity = 1.0, fillOpacity = 0.5, label = ~paste0(name, " County"),
+    highlightOptions = highlightOptions(color = "red", weight = 2,
+      bringToFront = TRUE))
+}
+
+for (i in state_files){
+  geo_data <- readLines(i) %>% paste(collapse = "\n")
+  map = map %>% addGeoJSON(geo_data, weight =1, color = "#4e8102",fill = FALSE)
+}
+map
+
+
+```
+
+
 ##  Similar Packages
 ```{r echo = FALSE}
 map_packages <- data.frame(Name = c("plot()", 
@@ -223,3 +265,5 @@ Cheng, J. (2021, January 07 a). Create interactive web maps with the JavaScript 
 Cheng, J. (2021b). leaflet v2.0.4.1. Retrieved from https://www.rdocumentation.org/packages/leaflet/versions/2.0.4.1
 
 Lovelace, R., Nowosad, J., & Muenchow, J. (2021, April 6). Geocomputation with R. Retrieved from https://geocompr.robinlovelace.net/adv-map.html
+
+Leaflet for R - working with Geojson &amp; TopoJSON. (n.d.). Retrieved April 06, 2021, from https://rstudio.github.io/leaflet/json.html
