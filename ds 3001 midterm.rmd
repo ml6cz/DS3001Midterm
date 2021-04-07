@@ -25,7 +25,14 @@ library(readr)
 library(knitr)
 # install.packages("leaflet")
 library(leaflet)
+library(stringr)
+library(sf)
+# install.packages("rgdal")
 library(rgdal)
+library(geojsonio)
+library(tidyverse)
+library(tidycensus)
+library(htmltools)
 ```
 
 ## Background Information
@@ -130,7 +137,7 @@ leaflet() %>%
 ```
 
 #### Pinning
-now that we have zoomed into the Charlottesville area, we can easily see a pin if we placed one, to demonstrate this, we will use the addMarkers() function and put a pin directly on the rotunda.
+Now that we have zoomed into the Charlottesville area, we can easily see a pin if we placed one, to demonstrate this, we will use the addMarkers() function and put a pin directly on the rotunda.
 ```{r}
 leaflet() %>%
   addTiles() %>%
@@ -200,6 +207,154 @@ map
 
 ```
 
+## More Interactive Features {.tabset}
+The tidycensus API was used for the majority of the data to access census data for Virginia.
+```{r echo= FALSE, include = FALSE}
+api_key="6aeadfa1dbbbf9a7ac353fb9e7517f1812eca3a6"
+census_api_key(api_key)
+
+#Instructions from https://juliasilge.com/blog/using-tidycensus/
+```
+
+### Population Density
+Using tidycensus's census data, we can display what percentile each of Virginia's counties fall into based on number of people. A higher percentile indicates a more densely populated area.
+```{r echo = FALSE, message = FALSE}
+#Population Data
+va_pop <- get_acs(geography = "county", 
+                     variables = "B01003_001", 
+                     state = "VA",
+                     geometry = TRUE) 
+
+pal <- colorQuantile(palette = "viridis", domain = va_pop$estimate, n = 10)
+
+va_pop %>%
+    st_transform(crs = "+init=epsg:4326") %>%
+    leaflet(width = "100%") %>%
+    addProviderTiles(provider = "CartoDB.Positron") %>%
+    addPolygons(popup = ~ str_extract(NAME, "^([^,]*)"),
+                stroke = FALSE,
+                smoothFactor = 0,
+                fillOpacity = 0.7,
+                color = ~ pal(estimate)) %>%
+    addLegend("bottomright", 
+              pal = pal, 
+              values = ~ estimate,
+              title = "Population percentiles",
+              opacity = 1)
+va_pop
+```
+### Median Home Value
+Using tidycensus's census data, we can display the median home value for each county. These groupings can be made more or less specific based on the argument provided to the API.
+```{r echo = FALSE, include = TRUE}
+alb_value <- get_acs(geography = "tract", 
+                    variables = "B25077_001", 
+                    state = "VA",
+                    county = "Albemarle County",
+                    geometry = TRUE)
+
+pal <- colorNumeric(palette = "viridis", 
+                    domain = alb_value$estimate)
+
+alb_value %>%
+    st_transform(crs = "+init=epsg:4326") %>%
+    leaflet(width = "100%") %>%
+    addProviderTiles(provider = "CartoDB.Positron") %>%
+    addPolygons(popup = ~ str_extract(NAME, "^([^,]*)"),
+                stroke = FALSE,
+                smoothFactor = 0,
+                fillOpacity = 0.7,
+                color = ~ pal(estimate)) %>%
+    addLegend("bottomright", 
+              pal = pal, 
+              values = ~ estimate,
+              title = "Median Home Value",
+              labFormat = labelFormat(prefix = "$"),
+              opacity = 1)
+alb_value
+```
+### Median Age
+Using tidycensus's census data, we can also display the median age for each county.
+```{r echo = FALSE, include = TRUE}
+va_age <- get_acs(geography = "county", 
+                     variables = "B01002_001", 
+                     state = "VA",
+                     geometry = TRUE) 
+
+va_pal <- colorNumeric(palette = "plasma", domain = va_age$estimate)
+
+va_age %>%
+    st_transform(crs = "+init=epsg:4326") %>%
+    leaflet(width = "100%") %>%
+    addProviderTiles(provider = "CartoDB.Positron") %>%
+    addPolygons(popup = ~ str_extract(NAME, "^([^,]*)"),
+                stroke = FALSE,
+                smoothFactor = 0,
+                fillOpacity = 0.7,
+                color = ~ va_pal(estimate)) %>%
+    addLegend("bottomright", 
+              pal = va_pal, 
+              values = ~ estimate,
+              title = "VA Median Age",
+              opacity = 1)
+```
+
+### New Zealand Earthquakes
+Using R's built-in earthquake data, we can quickly graph 1000 of New Zealand's earthquakes. When zoomed in or out, the groupings will change accordingly. Furthermore, the color will change based on the magnitude of the earthquake.
+
+```{r echo = FALSE, include = TRUE}
+leaflet(quakes) %>% addTiles() %>% addMarkers(
+  clusterOptions = markerClusterOptions()
+)
+leaflet
+```
+
+### Fried Chicken Static
+Yelp's Top 10 Fried Chicken restaurants in Charlottesville
+```{r echo = FALSE, include = TRUE}
+chickenIcon <- icons(
+  iconUrl = "chickenIcon.svg",
+  iconWidth = 38, iconHeight = 95
+)
+
+# Importing data about chicken places in Charlottesville
+chicken <- read.csv('chicken_locations.csv', header = TRUE)
+
+# Adding markers
+leaflet(data = chicken) %>% 
+  addTiles() %>% 
+  addMarkers(~long, ~lat, icon = chickenIcon)
+```
+### More Food
+Yelp's Top 10 Fried Chicken restaurants in Charlottesville, Starbucks in Charlottesville, and UVA's Dining Halls.
+
+These markers were grouped with a specific label so that they could be switched on and off by the user using the checkboxes. When hovered over and when clicked on, extra information can be shown. For example, for the Starbucks icons, if hovered over it will show the name of the area it is in, but if clicked on it will show the hours of operations.
+```{r echo = FALSE, include = TRUE}
+uva <- read.csv('dining_halls.csv', header = TRUE)
+sbucks <- read.csv('starbucks_locations.csv', header = TRUE)
+
+uvaIcon <- icons(
+  iconUrl = "uva.png",
+  iconWidth = 45
+)
+
+sbucksIcon <- icons(
+  iconUrl = "starbucks.png",
+  iconWidth = 30
+)
+
+leaflet() %>% 
+  addProviderTiles(provider = "CartoDB.Positron") %>%
+  addMarkers(data=chicken, ~long, ~lat, icon = chickenIcon, group = "Chicken",
+             label = ~htmlEscape(chicken$name), popup = ~htmlEscape(chicken$address))%>%
+  addMarkers(data=uva, ~long, ~lat, icon = uvaIcon, group = "Dining Halls",
+             label = ~htmlEscape(uva$name))%>%
+  addMarkers(data=sbucks, ~long, ~lat, icon = sbucksIcon, group = "Starbucks",
+             label = ~htmlEscape(sbucks$name), popup = ~htmlEscape(sbucks$hours))%>%
+  addLayersControl(overlayGroups = c("Chicken", "Dining Halls", "Starbucks"),
+                   options = layersControlOptions(collapsed = FALSE))
+  
+  
+```
 
 ##  Similar Packages
 ```{r echo = FALSE}
