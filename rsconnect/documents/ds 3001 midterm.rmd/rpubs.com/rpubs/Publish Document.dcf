@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/750508/9c16946c4fc445869b5aef461a56c1a1
+bundleId: https://api.rpubs.com/api/v1/document/750508/9c16946c4fc445869b5aef461a56c1a1
+url: http://rpubs.com/meganwlin/750508
+when: 1617758347.30287

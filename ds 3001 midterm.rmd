@@ -41,7 +41,7 @@ Leaflet is an open-source JavaScript library for creating interactive maps that 
 
 It is used by websites ranging from The New York Times and The Washington Post to GitHub and Flickr, as well as GIS specialists at places like OpenStreetMap, Mapbox, and CartoDB to create insightful maps that offer more than just the basic photo of a map or Google Maps add-on. Its value lies in its customization that allows the developer to show more in-depth and specific features like popups, choropleths (shaded maps by density), and boundary lines (Agafonkin 2016).
 
-Leaflet uses MapBox's maptiles to create a basemap -- a common method popularized by Google Maps and a standard for most interactive web maps. Next, tiles can be added on top of the basemap to create a specific type of overlay to show some type of information (e.g. colored weather rain maps, major roads, cartography maps, etc.) and combined to convey customized levels of information. The default tile that an be added is from OpenStreetMap and includes the basics like roadways, coloring by type of area (e.g. blue for water, green for parks, tan for general land), names of cities/states/countries, etc. Third party tiles can also be installed for more complex and customized overlays (Cheng, 2021a).
+Leaflet uses MapBox's maptiles to create a basemap -- a common method popularized by Google Maps and a standard for most interactive web maps. Next, tiles can be added on top of the basemap to create a specific type of overlay to show some type of information (e.g. colored weather rain maps, major roads, cartography maps, etc.) and combined to convey customized levels of information. The default tile that can be added is from OpenStreetMap and includes the basics like roadways, coloring by type of area (e.g. blue for water, green for parks, tan for general land), names of cities/states/countries, etc. Third party tiles can also be installed for more complex and customized overlays (Cheng, 2021a).
 
 Leaflet is currently at version 2.0.4.1 as of January 7, 2021. Here are all the past version release dates:
 
@@ -54,7 +54,7 @@ version
 ```
 (Cheng, 2021b)
 
-The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie. Furthermore, the only dependencies are version 3.1.0 and above of R (Cheng, 2021a).
+The main authors of the Leaflet package are Joe Cheng, Bhaskar Karambelkar, and Yihui Xie. Furthermore, the only dependencies are version 3.1.0 and above of R. However, importing leaflet also imports base64enc, crosstalk, htmlwidgets, htmltools, magrittr, markdown, methods, png, RColorBrewer, raster, scales (≥ 1.0.0), sp, stats, viridis (≥ 0.5.1), leaflet.providers (≥ 1.8.0). The suggested imports include knitr, maps, sf (≥ 0.9-6), shiny, rgdal, rgeos, R6, RJSONIO, purrr, testthat (Cheng, 2021a).
 
 ### Features 
 
@@ -216,14 +216,31 @@ census_api_key(api_key)
 #Instructions from https://juliasilge.com/blog/using-tidycensus/
 ```
 
-### Population Density
-Using tidycensus's census data, we can display what percentile each of Virginia's counties fall into based on number of people. A higher percentile indicates a more densely populated area.
-```{r echo = FALSE, message = FALSE}
-#Population Data
+```{r echo = TRUE, include = FALSE, message = FALSE}
+#Imports from the API
+
 va_pop <- get_acs(geography = "county", 
                      variables = "B01003_001", 
                      state = "VA",
                      geometry = TRUE) 
+alb_value <- get_acs(geography = "tract", 
+                    variables = "B25077_001", 
+                    state = "VA",
+                    county = "Albemarle County",
+                    geometry = TRUE)
+va_age <- get_acs(geography = "county", 
+                     variables = "B01002_001", 
+                     state = "VA",
+                     geometry = TRUE) 
+```
+### Population Density
+Using tidycensus's census data, we can display what percentile each of Virginia's counties fall into based on number of people. A higher percentile indicates a more densely populated area.
+```{r echo = TRUE, message = FALSE}
+#Population Data
+#va_pop <- get_acs(geography = "county", 
+#                     variables = "B01003_001", 
+#                     state = "VA",
+#                     geometry = TRUE) 
 
 pal <- colorQuantile(palette = "viridis", domain = va_pop$estimate, n = 10)
 
@@ -241,16 +258,15 @@ va_pop %>%
               values = ~ estimate,
               title = "Population percentiles",
               opacity = 1)
-va_pop
 ```
 ### Median Home Value
 Using tidycensus's census data, we can display the median home value for each county. These groupings can be made more or less specific based on the argument provided to the API.
-```{r echo = FALSE, include = TRUE}
-alb_value <- get_acs(geography = "tract", 
-                    variables = "B25077_001", 
-                    state = "VA",
-                    county = "Albemarle County",
-                    geometry = TRUE)
+```{r echo = TRUE, message = FALSE}
+#alb_value <- get_acs(geography = "tract", 
+#                    variables = "B25077_001", 
+#                    state = "VA",
+#                    county = "Albemarle County",
+#                    geometry = TRUE)
 
 pal <- colorNumeric(palette = "viridis", 
                     domain = alb_value$estimate)
@@ -270,15 +286,14 @@ alb_value %>%
               title = "Median Home Value",
               labFormat = labelFormat(prefix = "$"),
               opacity = 1)
-alb_value
 ```
 ### Median Age
 Using tidycensus's census data, we can also display the median age for each county.
-```{r echo = FALSE, include = TRUE}
-va_age <- get_acs(geography = "county", 
-                     variables = "B01002_001", 
-                     state = "VA",
-                     geometry = TRUE) 
+```{r echo = TRUE, message = FALSE}
+#va_age <- get_acs(geography = "county", 
+#                     variables = "B01002_001", 
+#                     state = "VA",
+#                     geometry = TRUE) 
 
 va_pal <- colorNumeric(palette = "plasma", domain = va_age$estimate)
 
@@ -301,7 +316,7 @@ va_age %>%
 ### New Zealand Earthquakes
 Using R's built-in earthquake data, we can quickly graph 1000 of New Zealand's earthquakes. When zoomed in or out, the groupings will change accordingly. Furthermore, the color will change based on the magnitude of the earthquake.
 
-```{r echo = FALSE, include = TRUE}
+```{r echo = TRUE, message = FALSE}
 leaflet(quakes) %>% addTiles() %>% addMarkers(
   clusterOptions = markerClusterOptions()
 )
@@ -310,7 +325,7 @@ leaflet
 
 ### Fried Chicken Static
 Yelp's Top 10 Fried Chicken restaurants in Charlottesville
-```{r echo = FALSE, include = TRUE}
+```{r echo = TRUE, message = FALSE}
 chickenIcon <- icons(
   iconUrl = "chickenIcon.svg",
   iconWidth = 38, iconHeight = 95
@@ -328,7 +343,7 @@ leaflet(data = chicken) %>%
 Yelp's Top 10 Fried Chicken restaurants in Charlottesville, Starbucks in Charlottesville, and UVA's Dining Halls.
 
 These markers were grouped with a specific label so that they could be switched on and off by the user using the checkboxes. When hovered over and when clicked on, extra information can be shown. For example, for the Starbucks icons, if hovered over it will show the name of the area it is in, but if clicked on it will show the hours of operations.
-```{r echo = FALSE, include = TRUE}
+```{r echo = TRUE, message = FALSE}
 uva <- read.csv('dining_halls.csv', header = TRUE)
 sbucks <- read.csv('starbucks_locations.csv', header = TRUE)
 
